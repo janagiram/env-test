@@ -1,5 +1,6 @@
 .vagrant
 /html
+/magento
 
 # dev stuff
 .DS_Store

@@ -34,7 +34,7 @@ group { 'puppet':
 }
 
 class { 'apache2':
-    document_root => '/vagrant/www',
+    document_root => '/vagrant/html',
 }
 
 /**
@@ -49,27 +49,26 @@ class { 'mysql':
  */
 class { 'magento':
     /* install magento [true|false] */
-    install =>  false,
+    install =>  true,
+  	local =>  true,
 
-  /* source url in : puppet/modules/magento/manifests/init.pp
-   http://www.magentocommerce.com/downloads/assets/${version}/magento-${version}.tar.gz",*/
-    /*  magento community versions (downloaded online)*/
-    version     => '1.9.0.1',
-    #version     => '1.8.1.0',
-    #version    => '1.7.0.2',
-    #version    => '1.7.0.1',
-    #version    => '1.7.0.0',
-    #version    => '1.6.2.0',
-    #version    => '1.6.1.0',
-    #version    => '1.6.0.0',
-    #version    => '1.5.1.0',
-    #version    => '1.5.0.1',
-  /*  local tar.gz Magento source available in puppet/modules/magento/files folder?
-     Use this for Enterprise versions! (set true when local file available)
-     */
-  #version => 'Magento-EE-1.14.0.1.tar.gz',
+  /* ENTERPRISE EDITION  : tar.gz Magento source available in puppet/modules/magento/files folder?          */
+  version => 'Magento-EE-1.14.2.0.tar.gz',
 
-  local =>  false,
+  /* /* COMMUNITY EDITION
+  source url in : puppet/modules/magento/manifests/init.pp
+http://www.magentocommerce.com/downloads/assets/${version}/magento-${version}.tar.gz",*/
+  /*  magento community versions (downloaded online)*/
+  #version     => '1.9.0.1',
+  #version     => '1.8.1.0',
+  #version    => '1.7.0.2',
+  #version    => '1.7.0.1',
+  #version    => '1.7.0.0',
+  #version    => '1.6.2.0',
+  #version    => '1.6.1.0',
+  #version    => '1.6.0.0',
+  #version    => '1.5.1.0',
+  #version    => '1.5.0.1',
 
 
 
@@ -85,14 +84,14 @@ class { 'magento':
     use_rewrites => 'no',
   /*
   For base_url => 'http://magento.localhost.com'
-  add :192.168.33.10       magento.localhost.com  in hostmachine's hosts
+  add :10.10.33.20      baseurl in hostmachine's "hosts" file
   */
-    base_url => 'http://magento1901.localhost.com/',
+    base_url => 'http://portwest.localhost.com/',
 }
 
 
-host { 'magento1901.localhost.com':
-  ip      => '192.168.33.20',
+host { 'portwest.localhost.com':
+  ip      => '10.10.33.20',
 }
 
 class { 'git':

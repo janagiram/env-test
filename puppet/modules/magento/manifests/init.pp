@@ -33,14 +33,18 @@ if $local
    }
  */
 
-file { 'download-magento':
-  name =>"/tmp/${version}",
+exec { 'download-magento':
+  /*  name =>"/tmp/${version}",
   source  => "/vagrant/puppet/modules/magento/files/${version}",
   ensure =>present,
+*/
+  cwd     => "/tmp",
+  command => "cp /vagrant/puppet/modules/magento/files/${version} /tmp/${version}",
+  creates => "/tmp/${version}",
 }
 exec { "untar-magento":
   cwd     => $apache2::document_root,
-  command => "sudo /bin/tar xzf /tmp/${version}",
+  command => "sudo /bin/tar xzf /vagrant/puppet/modules/magento/files/${version}",
   timeout => 0,
   logoutput => true,
 }

@@ -8,7 +8,9 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant virtual environment requires a box to build off of.
   # config.vm.box = "base"
-  config.vm.box = "precise32"
+ # config.vm.box = "precise32"
+    config.vm.box = "precise64.box"
+
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
@@ -25,7 +27,7 @@ Vagrant.configure("2") do |config|
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
-  config.vm.network :private_network, ip: "192.168.33.20"
+  config.vm.network :private_network, ip: "10.10.33.20"
 
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
@@ -43,7 +45,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.synced_folder ".", "/vagrant", :mount_options => ["dmode=777,fmode=777"],type: "nfs"
   # Set the virtual machine host name
-  config.vm.hostname = "magento1901.localhost"
+  config.vm.hostname = "portwest.localhost"
 
 
   # ADDITIONAL CONFIGURATIONS
@@ -70,7 +72,7 @@ Vagrant.configure("2") do |config|
     # vb.gui = true
 
     # set virtual machine name
-    vb.name = "Magento-ce1901"
+    vb.name = "portwest-dev"
 
     # increase virtual machine memory
     #vb.customize ["modifyvm", :id, "--memory", "1024"]
