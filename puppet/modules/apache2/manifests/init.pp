@@ -14,4 +14,8 @@ class apache2( $document_root ) {
         ensure  => 'running',
         subscribe => File['/etc/apache2/sites-available/default'],
     }
+
+	file { $document_root:
+  		ensure  => directory
+	}
 }

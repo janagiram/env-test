@@ -1,0 +1,37 @@
+{
+    "name": "magento/environment",
+    "description": "webshop",
+    "repositories": [
+        {
+            "packagist": false
+        },
+
+        {
+            "type": "vcs",
+            "url": "https://github.com/AOEpeople/Aoe_Scheduler.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/leanswift/LeanSwift_eConnect.git"
+        },
+        {
+            "type": "composer",
+            "url": "http://packages.firegento.com"
+        }
+    ],
+    "require": {
+        "magento-hackathon/magento-composer-installer": "*",
+        "aoepeople/aoe_scheduler": "*",
+        "leanswift/leanswift_econnect": "*"
+
+    },
+    "autoload": {
+
+    },
+    "extra": {
+        "magento-root-dir": "html/",
+        "magento-deploystrategy": "symlink"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
